@@ -152,12 +152,12 @@ Phoenix itself is NOT a hard dep — `phoenix_pubsub` is the only PubSub-related
 4. ~~**Behaviours + defaults** — `Transport.PubSub`, `Delivery.Inline`. Wire `notify` → delivery → transports.~~ ✅
 5. ~~**`execute_action/3` + `ActionHandler` behaviour** — runner dispatching to the configured handler.~~ ✅
 6. ~~**Bell LiveComponent** — `<:trigger>`/`<:row>` slots, DaisyUI default markup, click/action UX (async via `send_update`), `PhxNotifications.LiveView` on_mount hook for PubSub forwarding.~~ ✅ Rendering tested via `render_component`.
-7. **Action endpoint** — `PhxNotifications.Plug.Actions`, token sign/verify (`plug_crypto`), redirect precedence. *(next)*
-8. **Migration generator** — `mix phx_notifications.install` / `.gen.migration` (with `--binary-id` flag).
+7. ~~**Action endpoint** — `PhxNotifications.Plug.Actions` + `PhxNotifications.Token` (`plug_crypto`-signed), two-level expiry, redirect precedence. Guarded on Plug being available.~~ ✅ Tested with `Plug.Test`.
+8. **Migration generator** — `mix phx_notifications.install` / `.gen.migration` (with `--binary-id` flag). *(next)*
 9. **Guides + two examples** — default DaisyUI; custom trigger icon + custom avatar row.
 10. **Optional adapters** (post-v1) — `Delivery.Oban`, `Transport.Push`.
 
-> Progress note: steps 1–6 implemented and tested (19 passing tests, warning-clean compile)
+> Progress note: steps 1–7 implemented and tested (25 passing tests, warning-clean compile)
 > on branch `feat/core-library`. Local folder remains `phoenix_notifications/` (cosmetic);
 > package/app/modules are `phx_notifications` / `PhxNotifications.*` as decided.
 

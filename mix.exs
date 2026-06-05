@@ -33,10 +33,14 @@ defmodule PhxNotifications.MixProject do
       # === Required ===
       {:ecto_sql, "~> 3.12"},
       {:phoenix_pubsub, "~> 2.1"},
+      {:plug_crypto, "~> 2.0"},
       {:jason, "~> 1.4"},
 
       # === Optional: in-app Bell LiveComponent ===
       {:phoenix_live_view, "~> 1.0", optional: true},
+
+      # === Optional: out-of-app action endpoint ===
+      {:plug, "~> 1.14", optional: true},
 
       # === Optional: Oban-backed delivery strategy ===
       {:oban, "~> 2.18", optional: true},

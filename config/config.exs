@@ -5,7 +5,8 @@ if config_env() == :test do
     ecto_repos: [PhxNotifications.TestRepo],
     repo: PhxNotifications.TestRepo,
     pubsub: PhxNotifications.PubSub,
-    action_handler: PhxNotifications.TestActionHandler
+    action_handler: PhxNotifications.TestActionHandler,
+    secret_key_base: String.duplicate("a", 64)
 
   config :phx_notifications, PhxNotifications.TestRepo,
     adapter: Ecto.Adapters.SQLite3,

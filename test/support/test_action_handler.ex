@@ -10,4 +10,6 @@ defmodule PhxNotifications.TestActionHandler do
   def handle_action("boom", _notification, _ctx), do: {:error, :failed}
 
   def handle_action("bad_return", _notification, _ctx), do: :not_a_tuple
+
+  def handle_action(_key, _notification, _ctx), do: {:ok, :done}
 end

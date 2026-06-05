@@ -31,6 +31,12 @@ defmodule PhxNotifications.Config do
   @doc "Default action-token max age in seconds. Overridable per action."
   def action_token_max_age, do: get(:action_token_max_age, @default_token_max_age)
 
+  @doc "Secret used to sign action-link tokens. Required for the action endpoint."
+  def secret_key_base, do: fetch!(:secret_key_base)
+
+  @doc "Fallback redirect target after an out-of-app action when nothing else applies."
+  def default_redirect, do: get(:default_redirect, "/")
+
   defp get(key, default \\ nil), do: Application.get_env(:phx_notifications, key, default)
 
   defp fetch!(key) do
