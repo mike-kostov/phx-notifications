@@ -155,7 +155,8 @@ Phoenix itself is NOT a hard dep — `phoenix_pubsub` is the only PubSub-related
 7. ~~**Action endpoint** — `PhxNotifications.Plug.Actions` + `PhxNotifications.Token` (`plug_crypto`-signed), two-level expiry, redirect precedence. Guarded on Plug being available.~~ ✅ Tested with `Plug.Test`.
 8. ~~**Migration generator** — `mix phx_notifications.install` / `.gen.migration` (`--binary-id` flag). Shared `PhxNotifications.Migration.change/1` body (dogfooded by the test migration).~~ ✅
 9. ~~**Guides + two examples** — `guides/getting_started.md`: default DaisyUI bell + custom trigger/avatar-row example.~~ ✅
-10. **Optional adapters** (post-v1) — `Delivery.Oban`, `Transport.Push`. *(deferred — post-v1)*
+10. **Leaf transports** (post-0.1) — provider-agnostic `Transport.Email` / `.SMS` / `.Push`, delegating to `Transport.Sender` (configured sender per channel), with the `:ok / :unavailable / :transient` result contract formalised on the `Transport` behaviour + telemetry. ✅
+11. **Remaining adapters** — `Delivery.Oban`; the `Transport.Fallback` composite + engagement escalation (see `docs/ideas/multi-channel-delivery.md`). *(deferred)*
 
 > Progress note: **v1 functionally complete** — steps 1–9 implemented and tested (27 passing
 > tests, warning-clean compile) on branch `feat/core-library`. Step 10 (Oban delivery, Push

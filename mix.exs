@@ -45,6 +45,7 @@ defmodule PhxNotifications.MixProject do
       {:ecto_sql, "~> 3.12"},
       {:phoenix_pubsub, "~> 2.1"},
       {:plug_crypto, "~> 2.0"},
+      {:telemetry, "~> 1.0"},
       {:jason, "~> 1.4"},
 
       # === Optional: in-app Bell LiveComponent ===
