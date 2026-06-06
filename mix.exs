@@ -2,7 +2,7 @@ defmodule PhxNotifications.MixProject do
   use Mix.Project
 
   @version "0.1.0"
-  @source_url "https://github.com/mike-kostov/phx_notifications"
+  @source_url "https://github.com/mike-kostov/phx-notifications"
 
   def project do
     [
