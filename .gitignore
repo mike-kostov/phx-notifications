@@ -20,8 +20,11 @@ erl_crash.dump
 *.ez
 
 # Ignore package tarball (built via "mix hex.build").
-phoenix_notifications-*.tar
+phx_notifications-*.tar
 
 # macOS
 **/.DS_Store
+
+# Local agent/editor settings
+/.claude/
 
