@@ -157,7 +157,8 @@ Phoenix itself is NOT a hard dep — `phoenix_pubsub` is the only PubSub-related
 9. ~~**Guides + two examples** — `guides/getting_started.md`: default DaisyUI bell + custom trigger/avatar-row example.~~ ✅
 10. **Leaf transports** (post-0.1) — provider-agnostic `Transport.Email` / `.SMS` / `.Push`, delegating to `Transport.Sender` (configured sender per channel), with the `:ok / :unavailable / :transient` result contract formalised on the `Transport` behaviour + telemetry. ✅
 11. **`Delivery.Oban`** — durable delivery: immediate in-app PubSub + one Oban job per out-of-app transport; worker maps `:ok`/`:transient`/`:unavailable` to done/retry/cancel. Guarded on Oban; tested on the SQLite Lite engine. ✅
-12. **Remaining** — `Transport.Fallback` composite + engagement escalation (see `docs/ideas/multi-channel-delivery.md`). *(deferred)*
+12. **`Transport.Fallback`** — composite transport: tries an ordered chain until one accepts; `:unavailable` skips, `:transient` moves on but is remembered; exhausted → `:transient` if any channel was transient, else `:unavailable`. ✅
+13. **Remaining** — timed *engagement* escalation (read-based, Oban-driven) — see `docs/ideas/multi-channel-delivery.md`. *(deferred)*
 
 > Progress note: **v1 functionally complete** — steps 1–9 implemented and tested (27 passing
 > tests, warning-clean compile) on branch `feat/core-library`. Step 10 (Oban delivery, Push

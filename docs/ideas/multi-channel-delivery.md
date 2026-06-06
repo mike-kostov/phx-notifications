@@ -72,8 +72,10 @@ be decided *before* building `Transport.Push`, since all leaf transports will re
    the destination itself, so recipient contact-resolution callbacks are **not** needed yet.
 2. ~~`Delivery.Oban` — retries on `:transient`.~~ ✅ Immediate in-app PubSub + one durable job per
    out-of-app transport; `:unavailable` cancels, `:transient` retries.
-3. `Transport.Fallback` (composite) — acceptance fallback ("Push → degrade to Email").
-4. *Only if needed:* engagement escalation (timed, read-based) as an Oban-driven policy.
+3. ~~`Transport.Fallback` (composite) — acceptance fallback ("Push → degrade to Email").~~ ✅
+   Ordered chain; `:ok` wins, `:unavailable` skips, `:transient` moves on but is remembered;
+   exhausted → `:transient` (retry) if any channel was transient, else `:unavailable`.
+4. *Only if needed:* engagement escalation (timed, read-based) as an Oban-driven policy. *(still deferred)*
 
 ## What we deliberately leave to users (for now)
 
