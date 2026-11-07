@@ -22,7 +22,7 @@ defmodule PhxNotifications.MixProject do
 
   defp aliases do
     [
-      precommit: ["compile --warnings-as-errors", "format --check-formatted", "test"]
+      precommit: ["hex.audit", "compile --warnings-as-errors", "format --check-formatted", "test"]
     ]
   end
 
